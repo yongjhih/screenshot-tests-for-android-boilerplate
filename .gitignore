@@ -1,0 +1,13 @@
+*.iml
+.gradle
+/local.properties
+.DS_Store
+/build
+/captures
+/.idea
+*.out
+tags
+.*.keystore
+.*.sw?
+fastlane/report.xml
+.DS_Store

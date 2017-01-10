@@ -1,0 +1,50 @@
+buildscript {
+    ext.kotlin_version = '1.0.5-2'
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.facebook.testing.screenshot:plugin:0.4.2'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.facebook.testing.screenshot'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId 'com.github.yongjhih.screenshot'
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0.0"
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner "com.github.yongjhih.screenshot.AppTestRunner"
+        testInstrumentationRunner "com.facebook.testing.screenshot.ScreenshotTestRunner"
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:24.2.1'
+
+    testCompile 'junit:junit:4.12'
+
+    androidTestCompile("com.android.support.test:runner:0.5") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile("com.android.support.test:rules:0.5") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+}
